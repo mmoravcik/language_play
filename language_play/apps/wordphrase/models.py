@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 
 class WordPhrase(models.Model):
@@ -24,3 +25,7 @@ class Language(models.Model):
 
     def __unicode__(self):
         return "%s - %s" % (self.code, self.name)
+
+
+class Picture(models.Model):
+    file = models.ImageField(upload_to='wordphrases')

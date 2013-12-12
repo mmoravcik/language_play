@@ -3,3 +3,4 @@ MySQL-python
 Django==1.6.1
 sorl-thumbnail
 South==0.8.4
+Pillow==2.2.1

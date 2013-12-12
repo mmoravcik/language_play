@@ -53,6 +53,9 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'language_play.urls'
 
+MEDIA_ROOT = '/tmp/'
+MEDIA_URL = '/media/'
+
 
 
 # Database
