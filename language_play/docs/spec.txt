@@ -1,0 +1,31 @@
+WordPhrase
+----------
+
+id
+text
+language > Languages (en,sk)
+sound
+creator
+type > word, phrase
+
+Pictures
+--------
+id
+picture
+
+
+Languages
+---------
+id
+name
+code
+
+1 Ruka sk [ruka] matus word
+2 Hand en [hand] matus word
+3 Arm en [arm] matus word
+
+translations
+
+word_phrase1_id
+word_phrase2_id
+

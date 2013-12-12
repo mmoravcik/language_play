@@ -38,6 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'language_play',
+    'language_play.apps.wordphrase',
+    'south',
 )
 
 MIDDLEWARE_CLASSES = (
