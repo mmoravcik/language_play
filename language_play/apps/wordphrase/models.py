@@ -1,5 +1,4 @@
 from django.db import models
-from django.conf import settings
 
 
 class WordPhrase(models.Model):
@@ -14,6 +13,7 @@ class WordPhrase(models.Model):
     language = models.ForeignKey('Language')
     sounds = models.CharField(max_length=255, null=True, blank=True)
     type = models.SmallIntegerField(max_length=1, choices=TYPE)
+    translations = models.ManyToManyField("self", blank=True, null=True)
 
     def __unicode__(self):
         return self.text
@@ -29,3 +29,4 @@ class Language(models.Model):
 
 class Picture(models.Model):
     file = models.ImageField(upload_to='wordphrases')
+    wordphrase = models.ForeignKey('WordPhrase', null=True, blank=True)

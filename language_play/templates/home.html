@@ -4,5 +4,15 @@
 
 {% block content %}
     Hello world
+    <Br />
+
+
+        {{ wordphrase.text }}<br />
+        {%  for pic in  wordphrase.picture_set.all %}
+            <img src='/media/{{ pic.file }}' />
+
+        {% endfor %}
+
+
 
 {% endblock %}
