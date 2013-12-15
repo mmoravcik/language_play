@@ -9,10 +9,10 @@ class WordPhrase(models.Model):
         (PHRASE, 'Phrase'),
     )
 
-    text = models.CharField(max_length=255)
+    text = models.CharField(max_length=255, unique=True)
     language = models.ForeignKey('Language')
     sounds = models.CharField(max_length=255, null=True, blank=True)
-    type = models.SmallIntegerField(max_length=1, choices=TYPE)
+    type = models.SmallIntegerField(max_length=1, choices=TYPE, default=WORD)
     translations = models.ManyToManyField("self", blank=True, null=True)
 
     def __unicode__(self):

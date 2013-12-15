@@ -9,11 +9,14 @@ class HomeView(TemplateView):
     def get_context_data(self, **kwargs):
         ctx = super(HomeView, self).get_context_data()
 
-        wordphrases = WordPhrase.objects.all()
+        queryset = WordPhrase.objects.all()
         if 'source_lang' in self.request.session:
-            wordphrases = wordphrases.filter(language=self.request.session['source_lang'])
+            queryset = queryset.filter(language=self.request.session['source_lang'])
 
-        ctx['wordphrase'] = wordphrases.order_by('?')[0]
+        wordphrase = queryset.order_by('?')[0]
+        translations = wordphrase.translations.all()
+
+        ctx['wordphrase'] = wordphrase
         ctx['language_form'] = LanguageForm(initial={
             'source_lang':self.request.session.get('source_lang', ''),
             'destination_lang':self.request.session.get('destination_lang', '')

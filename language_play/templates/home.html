@@ -1,18 +1,11 @@
 {% extends 'base.html' %}
 
-{% block title %}I am here{% endblock %}
-
 {% block content %}
-    Hello world
-    <Br />
-    <form method='post' action='{% url 'language-select' %}'>
-    {% csrf_token %}
-    {{ language_form }} <input type='submit' value='Set' /><br />
-    </form>
-        {{ wordphrase.text }}<br />
+        <h1 class='text-center'>{{ wordphrase.text|title }}</h1>
+        <div class='images text-center'>
         {%  for pic in  wordphrase.picture_set.all %}
             <img src='/media/{{ pic.file }}' />
-
         {% endfor %}
+        </div>
 
 {% endblock %}

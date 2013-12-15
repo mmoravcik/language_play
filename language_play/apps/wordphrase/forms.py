@@ -3,7 +3,12 @@ from language_play.apps.wordphrase.models import Language
 
 
 class LanguageForm(forms.Form):
-    source_lang = forms.ModelChoiceField(queryset=Language.objects.all(),
-        empty_label=None)
-    destination_lang = forms.ModelChoiceField(queryset=Language.objects.all(),
-        empty_label=None)
+    source_lang = forms.ModelChoiceField(
+        label='From',
+        queryset=Language.objects.all(),
+        empty_label=None,
+    )
+    destination_lang = forms.ModelChoiceField(label='To',
+        queryset=Language.objects.all().order_by('-id'),
+        empty_label=None,
+    )
