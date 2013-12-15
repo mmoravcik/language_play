@@ -6,6 +6,7 @@ from django.conf import settings
 admin.autodiscover()
 
 from views import HomeView
+from language_play.apps.wordphrase import views
 
 
 urlpatterns = patterns('',
@@ -13,5 +14,6 @@ urlpatterns = patterns('',
     url(r'^$', HomeView.as_view(), name='home'),
     # url(r'^blog/', include('blog.urls')),
 
+    url(r'^language/select/$', views.LanguageFormView.as_view(), name='language-select'),
     url(r'^admin/', include(admin.site.urls)),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
