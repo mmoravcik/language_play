@@ -1,19 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-        <a class='pull-right btn btn-info' href="/">Give me next word</a>
-        <br />
+    <div class='text-center'>
+        <a class='btn btn-info' href="/">Give me next word</a><br />
 
-        <h1 id='wordphrase-word' class='text-center'>{{ wordphrase.text|title }}</h1>
+        {% if not request.session.show_wordphrase %}
+            <a id='toggle-word' class='text-center clearfix btn btn-info' href='#'>show word</a>
+        {% endif %}
+        <h1 id='wordphrase-word' class='text-center'
+            style='display:{% if not request.session.show_wordphrase %}none{% endif %}'>
+            {{ wordphrase.text|title }}
+        </h1>
 
 
         <div class='images text-center'>
 
-            {% if request.session.hide_images %}
-                <a class='text-center' href='#' onclick='$("#wordphrase-images").toggle()'>Image +/-</a>
+            {% if not request.session.show_images %}
+                <a id='toggle-images' class='text-center btn btn-info' href='#'>show image</a>
             {% endif %}
 
-            <div id='wordphrase-images' style='display: {% if request.session.hide_images %}none{% endif %}'>
+            <div id='wordphrase-images' style='display: {% if not request.session.show_images %}none{% endif %}'>
 
                 {% if wordphrase.picture_set.all %}
                     {%  for pic in  wordphrase.picture_set.all %}
@@ -24,5 +30,36 @@
                 {% endif %}
             </div>
 
+            {% if not request.session.show_translations %}
+                <br />
+                <a id='toggle-translation' class='text-center btn btn-info' href='#'>show translation</a>
+            {% endif %}
+
+            <div id='wordphrase-translations' style='display: {% if not request.session.show_translations %}none{% endif %}'>
+                {% for wordphrase in translations %}
+                    {{ wordphrase.text }}
+                {% endfor %}
+            </div>
         </div>
+    </div>
+{% endblock %}
+
+{% block onbodyload %}
+    {{ block.super }}
+    $('#toggle-translation').click(function(){
+        $("#wordphrase-translations").toggle();
+        $(this).hide()
+    });
+
+    $('#toggle-images').click(function(){
+        $("#wordphrase-images").toggle();
+        $(this).hide()
+    });
+
+    $('#toggle-word').click(function(){
+        $("#wordphrase-word").toggle();
+         $(this).hide()
+    });
+
+
 {% endblock %}

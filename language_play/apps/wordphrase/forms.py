@@ -12,5 +12,6 @@ class SettingsForm(forms.Form):
         queryset=Language.objects.all().order_by('-id'),
         empty_label=None,
     )
-    hide_images = forms.BooleanField(label='Hide images', required=False)
-    hide_words = forms.BooleanField(label='Hide words', required=False)
+    show_images = forms.BooleanField(label='Images', required=False)
+    show_wordphrase = forms.BooleanField(label='Words', required=False)
+    show_translations = forms.BooleanField(label='Translations', required=False)

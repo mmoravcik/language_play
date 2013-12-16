@@ -14,13 +14,17 @@ class HomeView(TemplateView):
             queryset = queryset.filter(language=self.request.session['source_lang'])
 
         wordphrase = queryset.order_by('?')[0]
-        translations = wordphrase.translations.all()
+        translations = wordphrase.translations.filter(language=self.request.session['destination_lang'])
 
         ctx['wordphrase'] = wordphrase
+        ctx['translations'] = translations
+
+
         ctx['language_form'] = SettingsForm(initial={
             'source_lang':self.request.session.get('source_lang', ''),
             'destination_lang':self.request.session.get('destination_lang', ''),
-            'hide_images':self.request.session.get('hide_images', ''),
-            'hide_words':self.request.session.get('hide_words', ''),
+            'show_images':self.request.session.get('show_images', ''),
+            'show_wordphrase':self.request.session.get('show_wordphrase', ''),
+            'show_translations':self.request.session.get('show_translations', ''),
         })
         return ctx
