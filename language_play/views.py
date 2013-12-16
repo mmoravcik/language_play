@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView
 from language_play.apps.wordphrase.models import WordPhrase
-from language_play.apps.wordphrase.forms import LanguageForm
+from language_play.apps.wordphrase.forms import SettingsForm
 
 
 class HomeView(TemplateView):
@@ -17,8 +17,10 @@ class HomeView(TemplateView):
         translations = wordphrase.translations.all()
 
         ctx['wordphrase'] = wordphrase
-        ctx['language_form'] = LanguageForm(initial={
+        ctx['language_form'] = SettingsForm(initial={
             'source_lang':self.request.session.get('source_lang', ''),
-            'destination_lang':self.request.session.get('destination_lang', '')
+            'destination_lang':self.request.session.get('destination_lang', ''),
+            'hide_images':self.request.session.get('hide_images', ''),
+            'hide_words':self.request.session.get('hide_words', ''),
         })
         return ctx

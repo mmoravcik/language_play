@@ -2,12 +2,27 @@
 
 {% block content %}
         <a class='pull-right btn btn-info' href="/">Give me next word</a>
-        <h1 class='text-center'>{{ wordphrase.text|title }}</h1>
+        <br />
+
+        <h1 id='wordphrase-word' class='text-center'>{{ wordphrase.text|title }}</h1>
+
+
         <div class='images text-center'>
-        {%  for pic in  wordphrase.picture_set.all %}
-            <img src='/media/{{ pic.file }}' />
-        {% endfor %}
+
+            {% if request.session.hide_images %}
+                <a class='text-center' href='#' onclick='$("#wordphrase-images").toggle()'>Image +/-</a>
+            {% endif %}
+
+            <div id='wordphrase-images' style='display: {% if request.session.hide_images %}none{% endif %}'>
+
+                {% if wordphrase.picture_set.all %}
+                    {%  for pic in  wordphrase.picture_set.all %}
+                        <img src='/media/{{ pic.file }}' />
+                    {% endfor %}
+                {% else %}
+                    image to come x
+                {% endif %}
+            </div>
+
         </div>
-
-
 {% endblock %}
