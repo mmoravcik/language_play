@@ -18,6 +18,9 @@ class WordPhrase(models.Model):
     def __unicode__(self):
         return self.text
 
+    class Meta:
+        ordering = (['text'])
+
 
 class Language(models.Model):
     code = models.CharField(max_length=10)
