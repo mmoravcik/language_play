@@ -5,7 +5,7 @@
         <a class='btn btn-info' href="/">Give me next word</a><br />
 
         {% if not show_wordphrase %}
-            <a id='toggle-word' class='text-center clearfix btn btn-info' href='#'>show word</a>
+            <a id='toggle-word' class='btn btn-danger' href='#'>show word</a>
         {% endif %}
         <h1 id='wordphrase-word' class='text-center'
             style='display:{% if not show_wordphrase %}none{% endif %}'>
@@ -13,10 +13,10 @@
         </h1>
 
 
-        <div class='images text-center'>
+        <div class='images'>
 
             {% if not show_images %}
-                <a id='toggle-images' class='text-center btn btn-info' href='#'>show image</a>
+                <a id='toggle-images' class='btn btn-success' href='#'>show image</a>
             {% endif %}
 
             <div id='wordphrase-images' style='display: {% if not show_images %}none{% endif %}'>
@@ -32,7 +32,7 @@
 
             {% if not show_translations %}
                 <br />
-                <a id='toggle-translation' class='text-center btn btn-info' href='#'>show translation</a>
+                <a id='toggle-translation' class='btn btn-warning' href='#'>show translation</a>
             {% endif %}
 
             <div id='wordphrase-translations' style='display: {% if not show_translations %}none{% endif %}'>
