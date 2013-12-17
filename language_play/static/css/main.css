@@ -19,7 +19,7 @@ label {
 }
 
 #id_destination_lang {
-    display:none;
+    xdisplay:none;
 }
 
 .jumbotron {

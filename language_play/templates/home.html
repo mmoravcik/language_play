@@ -4,22 +4,22 @@
     <div class='text-center'>
         <a class='btn btn-info' href="/">Give me next word</a><br />
 
-        {% if not request.session.show_wordphrase %}
+        {% if not show_wordphrase %}
             <a id='toggle-word' class='text-center clearfix btn btn-info' href='#'>show word</a>
         {% endif %}
         <h1 id='wordphrase-word' class='text-center'
-            style='display:{% if not request.session.show_wordphrase %}none{% endif %}'>
+            style='display:{% if not show_wordphrase %}none{% endif %}'>
             {{ wordphrase.text|title }}
         </h1>
 
 
         <div class='images text-center'>
 
-            {% if not request.session.show_images %}
+            {% if not show_images %}
                 <a id='toggle-images' class='text-center btn btn-info' href='#'>show image</a>
             {% endif %}
 
-            <div id='wordphrase-images' style='display: {% if not request.session.show_images %}none{% endif %}'>
+            <div id='wordphrase-images' style='display: {% if not show_images %}none{% endif %}'>
 
                 {% if wordphrase.picture_set.all %}
                     {%  for pic in  wordphrase.picture_set.all %}
@@ -30,12 +30,12 @@
                 {% endif %}
             </div>
 
-            {% if not request.session.show_translations %}
+            {% if not show_translations %}
                 <br />
                 <a id='toggle-translation' class='text-center btn btn-info' href='#'>show translation</a>
             {% endif %}
 
-            <div id='wordphrase-translations' style='display: {% if not request.session.show_translations %}none{% endif %}'>
+            <div id='wordphrase-translations' style='display: {% if not show_translations %}none{% endif %}'>
                 {% for wordphrase in translations %}
                     {{ wordphrase.text }}
                 {% endfor %}
