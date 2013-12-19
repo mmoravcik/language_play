@@ -13,6 +13,7 @@ class PictureInline(admin.TabularInline):
 
 class WordPhraseAdmin(admin.ModelAdmin):
     inlines = (PictureInline, )
+    list_filter = ('language',)
 
 
 admin.site.register(Language)
