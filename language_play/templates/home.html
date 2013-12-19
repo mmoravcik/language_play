@@ -32,7 +32,6 @@
             </div>
 
             {% if not show_translations %}
-                <br />
                 <a id='toggle-translation' class='btn btn-warning' href='#'>show translation</a>
             {% endif %}
 
@@ -43,7 +42,7 @@
             </div>
 
             {% if wordphrase.type == 1  %}
-                <a class='btn btn-link'
+                <br /><a class='btn btn-link'
                    target="_blank"
                    href='http://www.forvo.com/word/{{ wordphrase.text }}/#{{ wordphrase.language.code }}'>
                     Pronunciation
