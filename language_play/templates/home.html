@@ -2,92 +2,22 @@
 {% load staticfiles %}
 
 {% block content %}
+    <h2 class='text-center'>Hello Jessky!</h2>
+    <p class='clearfix'>This website has been created especially for your talented brain...</p>
+    <p class='pull-right'><em>...using my very own 'illustrations' and words you mostly know (74 and counting)</em></p>
+    <br /><p>To help you with learning the new languages...</p>
+    <p class='pull-right'><em>...which you wrongly assumed is very difficult for you</em></p>
+    <br /><p>As we have found out...</p>
+    <p class='pull-right'><em>...you are in fact very good at it, so...</em></p>
+
+    <br />
     <div class='text-center'>
-        <div>
-            <a class='btn btn-info' href="/">
-                <span class="glyphicon glyphicon-arrow-right"></span>
-                Give me next word
-            </a>
-        </div>
-
-        {% if not show_wordphrase %}
-            <div>
-                <a id='toggle-word' class='btn btn-danger' href='#'>
-                    <span class="glyphicon glyphicon-font"></span>
-                    show word
-                </a>
-            </div>
-        {% endif %}
-
-        <h1 id='wordphrase-word' class='text-center'
-            style='display:{% if not show_wordphrase %}none{% endif %}'>
-            {{ wordphrase.text|title }}
-        </h1>
-
-
-        <div class='images'>
-
-            {% if not show_images %}
-                <div>
-                    <a id='toggle-images' class='btn btn-success' href='#'>
-                        <span class="glyphicon glyphicon-camera"></span>
-                        show image
-                    </a>
-                </div>
-            {% endif %}
-
-            <div id='wordphrase-images' style='display: {% if not show_images %}none{% endif %}'>
-
-                {% if wordphrase.picture_set.all %}
-                    {%  for pic in  wordphrase.picture_set.all %}
-                        <img src='/media/{{ pic.file }}' />
-                    {% endfor %}
-                {% else %}
-                    <img width='160' src='{% static 'images/work-in-progress.png' %}' />
-                {% endif %}
-            </div>
-
-            {% if not show_translations %}
-                <div>
-                    <a id='toggle-translation' class='btn btn-warning' href='#'>
-                        <span class="glyphicon glyphicon-transfer"></span> show translation
-                    </a>
-                </div>
-            {% endif %}
-
-            <div id='wordphrase-translations' style='display: {% if not show_translations %}none{% endif %}'>
-                {% for wordphrase in translations %}
-                    {{ wordphrase.text }}
-                {% endfor %}
-            </div>
-
-            {% if wordphrase.type == 1  %}
-                <a class='btn btn-link'
-                   target="_blank"
-                   href='http://www.forvo.com/word/{{ wordphrase.text }}/#{{ wordphrase.language.code }}'>
-                    <span class="glyphicon glyphicon-bullhorn"></span> Pronunciation
-                </a>
-            {% endif %}
-        </div>
+        <a href='{% url 'wordphrase-random' %}' class='btn btn-info'>Lets get started!</a>
     </div>
 {% endblock %}
 
 {% block onbodyload %}
-    {{ block.super }}
-    $('#toggle-translation').click(function(){
-        $("#wordphrase-translations").toggle();
-        $(this).parent().hide();
-    });
 
-    $('#toggle-images').click(function(){
-        $("#wordphrase-images").toggle();
-        $(this).parent().hide();
-    });
-
-    $('#toggle-word').click(function(){
-        $("#wordphrase-word").toggle();
-         $(this).parent().hide();
-    });
 
 
 {% endblock %}
