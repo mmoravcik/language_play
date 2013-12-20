@@ -3,11 +3,22 @@
 
 {% block content %}
     <div class='text-center'>
-        <a class='btn btn-info' href="/">Give me next word</a><br />
+        <div>
+            <a class='btn btn-info' href="/">
+                <span class="glyphicon glyphicon-arrow-right"></span>
+                Give me next word
+            </a>
+        </div>
 
         {% if not show_wordphrase %}
-            <a id='toggle-word' class='btn btn-danger' href='#'>show word</a>
+            <div>
+                <a id='toggle-word' class='btn btn-danger' href='#'>
+                    <span class="glyphicon glyphicon-font"></span>
+                    show word
+                </a>
+            </div>
         {% endif %}
+
         <h1 id='wordphrase-word' class='text-center'
             style='display:{% if not show_wordphrase %}none{% endif %}'>
             {{ wordphrase.text|title }}
@@ -17,7 +28,12 @@
         <div class='images'>
 
             {% if not show_images %}
-                <a id='toggle-images' class='btn btn-success' href='#'>show image</a>
+                <div>
+                    <a id='toggle-images' class='btn btn-success' href='#'>
+                        <span class="glyphicon glyphicon-camera"></span>
+                        show image
+                    </a>
+                </div>
             {% endif %}
 
             <div id='wordphrase-images' style='display: {% if not show_images %}none{% endif %}'>
@@ -32,7 +48,11 @@
             </div>
 
             {% if not show_translations %}
-                <a id='toggle-translation' class='btn btn-warning' href='#'>show translation</a>
+                <div>
+                    <a id='toggle-translation' class='btn btn-warning' href='#'>
+                        <span class="glyphicon glyphicon-transfer"></span> show translation
+                    </a>
+                </div>
             {% endif %}
 
             <div id='wordphrase-translations' style='display: {% if not show_translations %}none{% endif %}'>
@@ -42,10 +62,10 @@
             </div>
 
             {% if wordphrase.type == 1  %}
-                <br /><a class='btn btn-link'
+                <a class='btn btn-link'
                    target="_blank"
                    href='http://www.forvo.com/word/{{ wordphrase.text }}/#{{ wordphrase.language.code }}'>
-                    Pronunciation
+                    <span class="glyphicon glyphicon-bullhorn"></span> Pronunciation
                 </a>
             {% endif %}
         </div>
@@ -56,17 +76,17 @@
     {{ block.super }}
     $('#toggle-translation').click(function(){
         $("#wordphrase-translations").toggle();
-        $(this).hide()
+        $(this).parent().hide();
     });
 
     $('#toggle-images').click(function(){
         $("#wordphrase-images").toggle();
-        $(this).hide()
+        $(this).parent().hide();
     });
 
     $('#toggle-word').click(function(){
         $("#wordphrase-word").toggle();
-         $(this).hide()
+         $(this).parent().hide();
     });
 
 
