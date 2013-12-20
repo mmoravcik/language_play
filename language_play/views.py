@@ -25,11 +25,4 @@ class HomeView(TemplateView):
         ctx['show_wordphrase'] = self.request.session.get('show_wordphrase', True)
         ctx['show_translations'] = self.request.session.get('show_translations', True)
 
-        ctx['language_form'] = SettingsForm(initial={
-            'source_lang':self.request.session.get('source_lang', ''),
-            'destination_lang':self.request.session.get('destination_lang', ''),
-            'show_images':self.request.session.get('show_images', True),
-            'show_wordphrase':self.request.session.get('show_wordphrase', True),
-            'show_translations':self.request.session.get('show_translations', True),
-        })
         return ctx

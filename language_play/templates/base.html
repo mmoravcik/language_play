@@ -47,7 +47,7 @@
                 <li>
                     <form method='post' action='{% url 'language-select' %}'>
                         {% csrf_token %}
-                        {{ language_form }} <input type='submit' value='Set' />
+                        {{ settings_form }} <input type='submit' value='Set' />
                     </form>
                 </li>
             </ul>
