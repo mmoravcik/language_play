@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load staticfiles %}
 
 {% block content %}
     <div class='text-center'>
@@ -43,7 +42,7 @@
                         <img src='/media/{{ pic.file }}' />
                     {% endfor %}
                 {% else %}
-                    <img width='160' src='{% static 'images/work-in-progress.png' %}' />
+                    <img width='160' src='{{ STATIC_URL }}images/work-in-progress.png' />
                 {% endif %}
             </div>
 

@@ -1,5 +1,5 @@
 from django import forms
-from language_play.apps.wordphrase.models import Language
+from apps.wordphrase.models import Language
 
 
 class SettingsForm(forms.Form):

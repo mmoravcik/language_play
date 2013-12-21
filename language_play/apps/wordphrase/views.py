@@ -5,8 +5,8 @@ from django.views.generic.base import RedirectView
 from django.core.urlresolvers import reverse
 from django.utils.text import slugify
 
-from language_play.apps.wordphrase.forms import SettingsForm
-from language_play.apps.wordphrase.models import WordPhrase
+from apps.wordphrase.forms import SettingsForm
+from apps.wordphrase.models import WordPhrase
 
 
 class SettingsFormView(FormView):

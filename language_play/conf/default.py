@@ -37,8 +37,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'language_play',
-    'language_play.apps.wordphrase',
     'south',
 )
 
@@ -51,7 +49,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.tz',
     'django.contrib.messages.context_processors.messages',
     'django.core.context_processors.request',
-    'language_play.apps.wordphrase.context_processors.wordphrase',
+    'apps.wordphrase.context_processors.wordphrase',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -64,9 +62,20 @@ MIDDLEWARE_CLASSES = (
 
 )
 
-ROOT_URLCONF = 'language_play.urls'
+ROOT_URLCONF = 'urls'
 
-MEDIA_ROOT = BASE_DIR + '/public/media'
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'templates'),
+)
+
+STATIC_ROOT = ''
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'public/media'),
 MEDIA_URL = '/media/'
 
 # Database
@@ -95,7 +104,5 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
-
-STATIC_URL = '/static/'
 
 ALLOWED_HOSTS = ['.slovakforjessky.com']

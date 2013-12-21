@@ -6,7 +6,7 @@ from django.views.generic import TemplateView
 
 admin.autodiscover()
 
-from language_play.apps.wordphrase import views
+from apps.wordphrase import views
 
 
 urlpatterns = patterns('',

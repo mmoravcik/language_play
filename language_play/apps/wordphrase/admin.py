@@ -1,6 +1,5 @@
 from django.contrib import admin
-from django.db.models import get_model
-from language_play.apps.wordphrase import models
+from apps.wordphrase import models
 
 
 class PictureInline(admin.TabularInline):
