@@ -61,11 +61,21 @@
                 {% endfor %}
             </div>
 
+            {% if wordphrase.pronunciation_set.all %}
+                {% for pronunciation in wordphrase.pronunciation_set.all %}
+                    <a href='#' onclick="playMP3('/media/{{ pronunciation.file }}');return false">
+                        <span class="glyphicon glyphicon-bullhorn"></span> mmm pronunciation
+                    </a>
+                {% endfor %}
+                <br />
+            {% endif %}
+
+
             {% if wordphrase.type == 1  %}
                 <a class='btn btn-link'
                    target="_blank"
                    href='http://www.forvo.com/word/{{ wordphrase.text }}/#{{ wordphrase.language.code }}'>
-                    <span class="glyphicon glyphicon-bullhorn"></span> Pronunciation
+                    <span class="glyphicon glyphicon-bullhorn"></span> External pronunciation
                 </a>
             {% endif %}
         </div>
@@ -88,6 +98,7 @@
         $("#wordphrase-word").toggle();
          $(this).parent().hide();
     });
+
 
 
 {% endblock %}

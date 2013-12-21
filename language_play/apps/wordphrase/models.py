@@ -33,3 +33,9 @@ class Language(models.Model):
 class Picture(models.Model):
     file = models.ImageField(upload_to='wordphrases')
     wordphrase = models.ForeignKey('WordPhrase', null=True, blank=True)
+
+
+class Pronunciation(models.Model):
+    file = models.FileField(upload_to='pronunciations')
+    wordhprase = models.ForeignKey('WordPhrase', null=True, blank=True)
+    recorded_by = models.ForeignKey('auth.User', null=True, blank=True)
