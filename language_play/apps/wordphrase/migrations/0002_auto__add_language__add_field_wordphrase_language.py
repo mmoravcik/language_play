@@ -18,7 +18,7 @@ class Migration(SchemaMigration):
 
         # Adding field 'WordPhrase.language'
         db.add_column(u'wordphrase_wordphrase', 'language',
-                      self.gf('django.db.models.fields.related.ForeignKey')(default='', to=orm['wordphrase.Language']),
+                      self.gf('django.db.models.fields.related.ForeignKey')(to=orm['wordphrase.Language'], null=True),
                       keep_default=False)
 
 
