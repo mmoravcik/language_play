@@ -198,7 +198,7 @@ def unpack(archive_path):
         sudo('mv %(web_dir)s %(build_dir)s' % env)
 
         prepare_infrastructure()
-        
+
         # Symlink media folder + its permissions
         sudo('ln -s ../../../media/%(build)s %(build_dir)s/public/media' % env)
         sudo('chown root:www-data -R %(build_dir)s/public/media' % env)

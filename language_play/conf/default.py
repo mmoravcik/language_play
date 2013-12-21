@@ -66,10 +66,8 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'language_play.urls'
 
-MEDIA_ROOT = '/tmp/'
+MEDIA_ROOT = BASE_DIR + '/public/media'
 MEDIA_URL = '/media/'
-
-
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
