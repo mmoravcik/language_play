@@ -1,6 +1,6 @@
 ipdb==0.2
 MySQL-python
 Django==1.6.1
-sorl-thumbnail==12
+sorl-thumbnail==11.12
 South==0.8.4
 Pillow==2.2.1
