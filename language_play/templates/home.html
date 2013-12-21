@@ -2,17 +2,20 @@
 {% load staticfiles %}
 
 {% block content %}
-    <h2 class='text-center'>Hello Jessky!</h2>
-    <p class='clearfix'>This website has been created especially for your talented brain...</p>
-    <p class='pull-right'><em>...using my very own 'illustrations' and words you mostly know (74 and counting)</em></p>
-    <br /><p>To help you with learning the new languages...</p>
-    <p class='pull-right'><em>...which you wrongly assumed is very difficult for you</em></p>
-    <br /><p>As we have found out...</p>
-    <p class='pull-right'><em>...you are in fact very good at it, so...</em></p>
+    <div id='home-content'>
+        <h1 class='text-center' style="margin-bottom:30px">Hello Jessky!</h1>
 
-    <br />
-    <div class='text-center'>
-        <a href='{% url 'wordphrase-random' %}' class='btn btn-info'>Lets get started!</a>
+        <p class='clearfix'>This website has been created especially for your talented brain...</p>
+        <p class='pull-right'><em>...using my very own 'illustrations' and words you mostly know</em></p>
+        <br /><p>To help you with learning the new languages...</p>
+        <p class='pull-right'><em>...which you wrongly assumed is very difficult for you</em></p>
+        <br /><p>As we have found out...</p>
+        <p class='pull-right'><em>...you are in fact very good at it, so...</em></p>
+
+        <br />
+        <div class='text-center'>
+            <a href='{% url 'wordphrase-random' %}' class='btn btn-info'>Lets get started!</a>
+        </div>
     </div>
 {% endblock %}
 

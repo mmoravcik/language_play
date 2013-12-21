@@ -22,7 +22,19 @@ label {
     xdisplay:none;
 }
 
+
+.small {
+    font-size: 75%;
+}
+
 .jumbotron {
     margin-top:0;
     padding:23px;
+    font-size:16px;
+    line-height:3;
+}
+
+#home-content {
+    font-size:21px;
+
 }

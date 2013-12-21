@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    <table width='100%'>
+    <tr>
+        <th>Word</th>
+        <th>Translations</th>
+    </tr>
+    {% for object in object_list %}
+        <tr>
+            <td>
+                <a href="{% url 'wordphrase-detail' object.language.code object.id object.text|slugify %}">
+                    {{ object.text }}
+                </a>
+            </td>
+            <td>
+                {% for translation in object.translations.all %}
+                    {{ translation.text }} <span class='small'>({{  translation.language.code}})</span>
+                    {% if not forloop.last %},{% endif %}
+
+                {% endfor %}
+            </td>
+        </tr>
+
+    {% endfor %}
+    </table>
+{% endblock %}

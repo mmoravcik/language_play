@@ -1,4 +1,5 @@
 from django.views.generic.edit import FormView
+from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.base import RedirectView
 from django.core.urlresolvers import reverse
@@ -45,6 +46,13 @@ class WordPhraseView(DetailView):
         ctx['show_translations'] = self.request.session.get('show_translations', True)
 
         return ctx
+
+
+class WordPhraseListView(ListView):
+    model = WordPhrase
+
+    def get_queryset(self):
+        return self.model.objects.filter(language=self.kwargs['language_id'])
 
 
 class GetRandomWordPhraseView(RedirectView):

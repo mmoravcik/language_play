@@ -40,6 +40,7 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a href='{% url 'wordphrase-random' %}'>Random word</a></li>
+                <li><a href='{% url 'wordphrase-list' request.session.source_lang %}'>All words</a></li>
                 <li><a href="{% url 'alphabet-slovak' %}">Slovak alphabet</a></li>
 
             </ul>
