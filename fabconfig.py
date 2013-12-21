@@ -13,11 +13,11 @@ from fabric.api import env
 # Many things are configured using the client and project code
 env.client = 'eteroon'
 env.project_code = 'language_play'
-env.domain = 'slovakforjessky.com'
+env.domain = 'slovakforjessky.co.uk'
 
 # This is the name of the folder within the repo which houses all code
 # to be deployed.
-env.web_dir = 'www'
+env.web_dir = 'language_play'
 
 # Environment-agnostic folders
 env.project_dir = '/var/www/%(client)s/%(project_code)s' % env
@@ -36,11 +36,10 @@ def _configure(build_name):
 
 def test():
     _configure('test')
-    env.domain = 'playground.martinapaukova.com'
+    env.domain = 'test.slovakforjessky.co.uk'
     env.hosts = ['83.169.35.198']
 
 
 def prod():
     _configure('prod')
     env.hosts = ['83.169.35.198']
-    env.domain = 'martinapaukova.com'

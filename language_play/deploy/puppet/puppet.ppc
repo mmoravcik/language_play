@@ -7,11 +7,11 @@ Exec {
 }
 
 $web_dirs = [ "/var/www/${client}/", "/var/www/${client}/${project}/",
-              "/var/www/${client}/${project}/builds",
-               "/var/www/${client}/${project}/virtualenvs",
-               "/var/www/${client}/${project}/virtualenvs/${project}-${build}",
-               "/var/www/${client}/${project}/media/",
-          ]
+              "/var/www/${client}/${project}/builds/",
+              "/var/www/${client}/${project}/virtualenvs/",
+              "/var/www/${client}/${project}/virtualenvs/${project}-${build}/",
+              "/var/www/${client}/${project}/media/",
+              ]
 
 file { $web_dirs:
     ensure => "directory",

@@ -97,10 +97,7 @@ def set_reference_to_deploy_from(branch):
         local('git checkout develop')
 
 def set_ssh_user():
-    if 'TANGENT_USER' in os.environ:
-        env.user = os.environ['TANGENT_USER']
-    else:
-        env.user = prompt(red('Username for remote host? [default is current user] '))
+    env.user = prompt(red('Username for remote host? [default is current user] '))
     if not env.user:
         env.user = os.environ['USER']
 
@@ -137,7 +134,7 @@ def deploy():
     # app and proc.
     set_ssh_user()
     deploy_codebase(env.build_file, env.version)
-    prepare_infrastructure()
+    #prepare_infrastructure()
     update_virtualenv()
     migrate()
     collect_static_files()
@@ -200,6 +197,8 @@ def unpack(archive_path):
         sudo('if [ -d "%(build_dir)s" ]; then rm -rf "%(build_dir)s"; fi' % env)
         sudo('mv %(web_dir)s %(build_dir)s' % env)
 
+        prepare_infrastructure()
+        
         # Symlink media folder + its permissions
         sudo('ln -s ../../../media/%(build)s %(build_dir)s/public/media' % env)
         sudo('chown root:www-data -R %(build_dir)s/public/media' % env)
