@@ -26,10 +26,9 @@ pip-log.txt
 *.mo
 
 folioport/conf/local.py
-www/conf/local.py
-www/folioport
+language_play/conf/local.py
 
-www/public/media/*
+language_play/public/media/*
 *.sqlite
 */*.sqlite
 /*/*/*.sqlite
