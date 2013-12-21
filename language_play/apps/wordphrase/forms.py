@@ -20,3 +20,4 @@ class SettingsForm(forms.Form):
     show_images = forms.BooleanField(label='Images', required=False)
     show_wordphrase = forms.BooleanField(label='Words', required=False)
     show_translations = forms.BooleanField(label='Translations', required=False)
+    next = forms.CharField(widget=forms.HiddenInput)

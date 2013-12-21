@@ -10,10 +10,10 @@ from language_play.apps.wordphrase.models import WordPhrase
 
 class SettingsFormView(FormView):
     form_class = SettingsForm
-    success_url = '/'
     template_name = 'home.html'
 
     def form_valid(self, form):
+        self.set_next_url(form)
         self.request.session['source_lang'] = form.cleaned_data['source_lang'].id
         self.request.session['destination_lang'] = form.cleaned_data['destination_lang'].id
         self.request.session['show_images'] = form.cleaned_data['show_images']
@@ -21,6 +21,12 @@ class SettingsFormView(FormView):
         self.request.session['show_translations'] = form.cleaned_data['show_translations']
 
         return super(SettingsFormView, self).form_valid(form)
+
+    def set_next_url(self, form):
+        if self.request.session['source_lang'] == form.cleaned_data['source_lang'].id:
+            self.success_url = form.cleaned_data['next']
+        else:
+            self.success_url = reverse('wordphrase-random')
 
 
 class WordPhraseView(DetailView):
