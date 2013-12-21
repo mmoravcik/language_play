@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load thumbnail %}
 
 {% block content %}
     <div class='text-center'>
@@ -39,7 +40,9 @@
 
                 {% if wordphrase.picture_set.all %}
                     {%  for pic in  wordphrase.picture_set.all %}
-                        <img src='/media/{{ pic.file }}' />
+                        {% thumbnail pic.file "450" as im %}
+                            <img src='{{ im.url }}' />
+                        {% endthumbnail %}
                     {% endfor %}
                 {% else %}
                     <img width='160' src='{{ STATIC_URL }}images/work-in-progress.png' />
