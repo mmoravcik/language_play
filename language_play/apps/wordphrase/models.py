@@ -32,7 +32,10 @@ class Language(models.Model):
 
 class Picture(models.Model):
     file = models.ImageField(upload_to='wordphrases')
-    wordphrase = models.ForeignKey('WordPhrase', null=True, blank=True)
+    wordphrase = models.ManyToManyField('WordPhrase', null=True, blank=True, related_name='pictures')
+
+    def __unicode__(self):
+        return u"%s" % self.file.name
 
 
 class Pronunciation(models.Model):

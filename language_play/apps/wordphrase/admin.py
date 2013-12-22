@@ -3,7 +3,7 @@ from apps.wordphrase import models
 
 
 class PictureInline(admin.TabularInline):
-    model = models.Picture
+    model = models.Picture.wordphrase.through
     extra = 1
 
 
@@ -18,11 +18,12 @@ class WordPhraseAdmin(admin.ModelAdmin):
 
     def save_related(self, request, form, formsets, change):
         super(WordPhraseAdmin, self).save_related(request, form, formsets, change)
-        if form.instance.picture_set.all():
-            for pic in form.instance.picture_set.all():
+        if form.instance.pictures.all() and form.instance.translations.all():
+            for translation in form.instance.translations.all():
+                translation.pictures.clear()
+            for pic in form.instance.pictures.all():
                 for translation in form.instance.translations.all():
-                    models.Picture.objects.filter(wordphrase=translation).delete()
-                    translation.picture_set.add(pic)
+                    translation.pictures.add(pic)
                     translation.save()
 
 
