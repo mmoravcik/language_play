@@ -16,15 +16,14 @@ class WordPhraseAdmin(admin.ModelAdmin):
     inlines = (PictureInline, PronunciationInline,)
     list_filter = ('language', 'type',)
 
-    def save_model(self, request, obj, form, change):
-        obj.save()
-        if obj.picture_set.all():
-            for pic in obj.picture_set.all():
-                for translation in obj.translations.all():
+    def save_related(self, request, form, formsets, change):
+        super(WordPhraseAdmin, self).save_related(request, form, formsets, change)
+        if form.instance.picture_set.all():
+            for pic in form.instance.picture_set.all():
+                for translation in form.instance.translations.all():
                     models.Picture.objects.filter(wordphrase=translation).delete()
                     translation.picture_set.add(pic)
-
-
+                    translation.save()
 
 
 admin.site.register(models.Language)
