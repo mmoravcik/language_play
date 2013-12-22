@@ -26,28 +26,28 @@
 
 
         <div class='images'>
+            {% if wordphrase.type == 1 %}
+                {% if not show_images %}
+                    <div>
+                        <a id='toggle-images' class='btn btn-success' href='#'>
+                            <span class="glyphicon glyphicon-camera"></span>
+                            show image
+                        </a>
+                    </div>
+                {% endif %}
 
-            {% if not show_images %}
-                <div>
-                    <a id='toggle-images' class='btn btn-success' href='#'>
-                        <span class="glyphicon glyphicon-camera"></span>
-                        show image
-                    </a>
+                <div id='wordphrase-images' style='display: {% if not show_images %}none{% endif %}'>
+                    {% if wordphrase.picture_set.all %}
+                        {%  for pic in  wordphrase.picture_set.all %}
+                            {% thumbnail pic.file "450" as im %}
+                                <img src='{{ im.url }}' />
+                            {% endthumbnail %}
+                        {% endfor %}
+                    {% else %}
+                        <img width='160' src='{{ STATIC_URL }}images/work-in-progress.png' />
+                    {% endif %}
                 </div>
             {% endif %}
-
-            <div id='wordphrase-images' style='display: {% if not show_images %}none{% endif %}'>
-
-                {% if wordphrase.picture_set.all %}
-                    {%  for pic in  wordphrase.picture_set.all %}
-                        {% thumbnail pic.file "450" as im %}
-                            <img src='{{ im.url }}' />
-                        {% endthumbnail %}
-                    {% endfor %}
-                {% else %}
-                    <img width='160' src='{{ STATIC_URL }}images/work-in-progress.png' />
-                {% endif %}
-            </div>
 
             {% if not show_translations %}
                 <div>
