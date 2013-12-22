@@ -29,6 +29,6 @@ folioport/conf/local.py
 language_play/conf/local.py
 
 language_play/public/media/*
-*.sqlite
-*/*.sqlite
-/*/*/*.sqlite
+*.sqlite3
+*/*.sqlite3
+/*/*/*.sqlite3
