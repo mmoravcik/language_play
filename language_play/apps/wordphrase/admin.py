@@ -14,7 +14,7 @@ class PronunciationInline(admin.TabularInline):
 
 class WordPhraseAdmin(admin.ModelAdmin):
     inlines = (PictureInline, PronunciationInline,)
-    list_filter = ('language',)
+    list_filter = ('language', 'type',)
 
 
 admin.site.register(models.Language)

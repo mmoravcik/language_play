@@ -16,7 +16,7 @@ class WordPhrase(models.Model):
     translations = models.ManyToManyField("self", blank=True, null=True)
 
     def __unicode__(self):
-        return self.text
+        return u"%s" % self.text
 
     class Meta:
         ordering = (['text'])
