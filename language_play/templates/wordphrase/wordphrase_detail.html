@@ -37,8 +37,8 @@
                 {% endif %}
 
                 <div id='wordphrase-images' style='display: {% if not show_images %}none{% endif %}'>
-                    {% if wordphrase.picture_set.all %}
-                        {%  for pic in  wordphrase.picture_set.all %}
+                    {% if wordphrase.pictures.all %}
+                        {%  for pic in  wordphrase.pictures.all %}
                             {% thumbnail pic.file "550" as im %}
                                 <img src='{{ im.url }}' width='{{ im.width }}' height="{{ im.height }}" alt="" />
                             {% endthumbnail %}
